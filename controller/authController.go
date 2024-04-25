@@ -15,11 +15,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// Validate email
 func validateEmail(email string) bool {
 	Re := regexp.MustCompile(`[a-zA-Z0-9._%+\-]+@[a-z0-9._%+\-]+\.[a-z0-9._%+\-]`)
 	return Re.MatchString(email)
 }
 
+// Register user
 func Register(c *fiber.Ctx) error {
 	var data map[string]interface{}
 	var userData models.User
@@ -48,6 +50,7 @@ func Register(c *fiber.Ctx) error {
 			"message": "Email Already Exists",
 		})
 	}
+	// Create user
 	user := models.User{
 		FirstName: data["first_name"].(string),
 		LastName:  data["last_name"].(string),
@@ -66,6 +69,7 @@ func Register(c *fiber.Ctx) error {
 	})
 }
 
+// Login user
 func Login(c *fiber.Ctx) error {
 	var data map[string]string
 

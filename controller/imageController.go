@@ -6,8 +6,10 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// Define the letters
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
+// Generate random string
 func randLetter(n int) string {
 	b := make([]rune, n)
 	for i := range b {
@@ -16,6 +18,7 @@ func randLetter(n int) string {
 	return string(b)
 }
 
+// Upload image
 func Upload(c *fiber.Ctx) error {
 	form, err := c.MultipartForm()
 	if err != nil {
